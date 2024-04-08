@@ -4,7 +4,6 @@ import com.cos.blog.dto.ResponseDto;
 import com.cos.blog.model.RoleType;
 import com.cos.blog.model.User;
 import com.cos.blog.service.UserService;
-import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +18,7 @@ public class UserApiController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/api/user")
+    @PostMapping("/auth/joinProc")
     public ResponseDto<Integer> save(@RequestBody User user) {
         log.info("UserApiController.save 호출됨");
         user.setRole(RoleType.USER);
@@ -27,13 +26,4 @@ public class UserApiController {
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 
-//    @PostMapping("/api/user/login")
-//    public ResponseDto<Integer> login(@RequestBody User user, HttpSession session) {
-//        log.info("UserApiController.login 호출됨");
-//        User principal = userService.login(user); //principal == 접근주체
-//        if (principal != null) {
-//            session.setAttribute("principal", principal);
-//        }
-//        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-//    }
 }

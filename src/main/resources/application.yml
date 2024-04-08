@@ -2,6 +2,7 @@ server:
   port: 8000
   servlet:
     encoding:
+      context-path: /
       charset: UTF-8
       enabled: true
       force: true
