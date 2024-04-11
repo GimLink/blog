@@ -29,9 +29,6 @@ public class UserApiController {
     private UserService userService;
 
     @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
     private PrincipalDetailService principalDetailService;
 
     @PostMapping("/auth/joinProc")
