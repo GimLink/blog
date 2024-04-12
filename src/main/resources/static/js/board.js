@@ -3,11 +3,14 @@ let index = {
         $("#btn-save").on("click", () => { //this 바인딩 하려면 () => 써야한다
             this.save();
         });
-        $("#btn-delete").on("click", () => { //this 바인딩 하려면 () => 써야한다
+        $("#btn-delete").on("click", () => {
             this.deleteById();
         });
-        $("#btn-update").on("click", () => { //this 바인딩 하려면 () => 써야한다
+        $("#btn-update").on("click", () => {
             this.update();
+        });
+        $("#btn-reply-save").on("click", () => {
+            this.replySave();
         });
     },
 
@@ -64,6 +67,26 @@ let index = {
         }).done(function(resp){
             alert("삭제가 완료되었습니다.");
             location.href = "/";
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
+    },
+    replySave: function () {
+        let data={
+            userId: $("#userId").val(),
+            boardId: $("#boardId").val(),
+            content: $("#reply-content").val()
+        };
+
+        $.ajax({
+            type:"POST",
+            url:`/api/board/${data.boardId}/reply`,
+            data:JSON.stringify(data),
+            contentType:"application/json; charset=utf-8",
+            dataType:"json"
+        }).done(function(resp){
+            alert("댓글이 작성됐습니다.");
+            location.href = `/board/${data.boardId}`;
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });

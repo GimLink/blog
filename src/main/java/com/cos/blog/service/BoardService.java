@@ -1,11 +1,16 @@
 package com.cos.blog.service;
 
+import com.cos.blog.dto.ReplySaveRequestDto;
+import com.cos.blog.dto.ResponseDto;
 import com.cos.blog.model.Board;
+import com.cos.blog.model.Reply;
 import com.cos.blog.model.User;
 import com.cos.blog.repository.BoardRepository;
+import com.cos.blog.repository.ReplyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +21,9 @@ public class BoardService {
 
     @Autowired
     BoardRepository boardRepository;
+
+    @Autowired
+    ReplyRepository replyRepository;
 
     @Transactional(readOnly = true)
     public Board findById(long id) {
@@ -47,5 +55,11 @@ public class BoardService {
         });
         board.setTitle(requestBoard.getTitle());
         board.setContent(requestBoard.getContent());
+    }
+
+    @Transactional
+    public void reply(ReplySaveRequestDto replySaveRequestDto) {
+        replyRepository.mySave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(),
+                replySaveRequestDto.getContent());
     }
 }

@@ -1,8 +1,10 @@
 package com.cos.blog.controller.api;
 
 import com.cos.blog.config.auth.PrincipalDetail;
+import com.cos.blog.dto.ReplySaveRequestDto;
 import com.cos.blog.dto.ResponseDto;
 import com.cos.blog.model.Board;
+import com.cos.blog.model.Reply;
 import com.cos.blog.model.RoleType;
 import com.cos.blog.model.User;
 import com.cos.blog.service.BoardService;
@@ -23,6 +25,12 @@ public class BoardApiController {
     @PostMapping("/api/board")
     public ResponseDto<Integer> save(@RequestBody Board board, @AuthenticationPrincipal PrincipalDetail principal) {
         boardService.submit(board, principal.getUser());
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+    }
+
+    @PostMapping("/api/board/{boardId}/reply")
+    public ResponseDto<Integer> replySave(@RequestBody ReplySaveRequestDto replySaveRequestDto) {
+        boardService.reply(replySaveRequestDto);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 

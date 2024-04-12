@@ -21,20 +21,29 @@
     <div class="card">
         <div class="card">
             <div class="card-header">전체 댓글</div>
-            <ul id="comment--box" class="list-group">
-                <li id="comment--1" class="list-group-item d-flex justify-content-between">
-                    <div>댓글 내용</div>
-                    <div class="d-flex">
-                        <div class="font-italic">작성자 : link&nbsp;</div>
-                        <button class="badge">삭제</button>
-                    </div>
-                </li>
+            <ul id="reply--box" class="list-group">
+                <c:forEach var="reply" items="${board.replies}">
+                    <li id="reply--1" class="list-group-item d-flex justify-content-between">
+                        <div>${reply.content}</div>
+                        <div class="d-flex">
+                            <div class="font-italic">${reply.user}&nbsp;</div>
+                            <button class="badge">삭제</button>
+                        </div>
+                    </li>
+                </c:forEach>
             </ul>
         </div>
         <br/>
-        <div>
-            <div class="card-body"><textarea class="form-control" row="1"></textarea></div>
-            <div class="card-footer d-flex justify-content-end"><button class="btn btn-primary">등록</button></div>
+        <div class="card">
+            <form>
+                <input type="hidden" id="userId" value="${principal.user.id}">
+                <input type="hidden" id="boardId" value="${board.id}">
+                <div class="card-body">
+                    <textarea id="reply-content" class="form-control" rows="1"></textarea>
+                </div>
+                <div class="card-footer d-flex justify-content-end">
+                    <button type="button" id="btn-reply-save" class="btn btn-primary">등록</button></div>
+            </form>
         </div>
 
     </div>
