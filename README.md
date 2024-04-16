@@ -16,7 +16,7 @@
           <strong>Spring Security</strong>
           <ul>
             <li>Spring Security 로그인</li>
-            <li>Spring SecurityOAusth2 카카오톡 회원가입 및 로그인</li>
+            <li>Spring Security OAuth2 카카오톡 회원가입 및 로그인</li>
           </ul>
         </li>
         <li>
@@ -105,7 +105,7 @@
             <ul>
                 <li>summernote 오픈소스 웹 에디터 사용하여 글작성 폼 구현</li>
                 <li>작성한 글이 html 스트링 타입으로 변환돼서 데이터베이스에 저장</li>
-                <li>내용에 이미지가 있을 경우 Base64로 인코딩 되어 그대로 DB에 저장되므로 추후 AWS S3를 이용하는 방식으로 바꿔줄 예정</li>
+                <li>내용에 이미지가 있을 경우 Base64로 인코딩 되어 그대로 DB에 저장되므로 추후 AWS S3를 이용하는 방식으로 바꿔줄 예정</li>
                 <li>게시글이 있을 경우 게시판 홈화면에 표시</li>
                 <li>
                     <img width="1468" alt="스크린샷 2024-04-16 17 38 31" src="https://github.com/GimLink/blog/assets/88365662/cd153fbf-a664-476b-a6c1-9a0c9f524131">
@@ -133,7 +133,7 @@
         <li>
             <strong>댓글 등록</strong>
             <ul>
-                <li>댓글 작성 순선대로 전체 댓글 목록에 표시 및 댓글 작성자 표시</li>
+                <li>댓글 작성 순선대로 전체 댓글 목록에 표시 및 댓글 작성자 표시</li>
                 <li>댓글 작성자에게만 댓글 삭제 버튼 보이도록 설정</li>
                 <li>
                     <img width="1147" alt="스크린샷 2024-04-16 17 55 28" src="https://github.com/GimLink/blog/assets/88365662/27751789-7d25-4f7a-92db-96cc86e3c3d1">
