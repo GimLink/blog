@@ -15,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString(exclude = "replies")
 @Entity
 public class Board {
 
@@ -33,8 +34,8 @@ public class Board {
     @JoinColumn(name = "userId")
     private User user;
 
-    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER)
-    @JsonIgnoreProperties({"board"})
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+//    @JsonIgnoreProperties({"board"})
     private List<Reply> replies = new ArrayList<>();
 
     @CreationTimestamp
